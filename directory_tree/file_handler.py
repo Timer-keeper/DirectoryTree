@@ -14,8 +14,9 @@ class FileHandler:
             try:
                 with open(filepath, 'r', encoding='utf-8') as f:
                     content = f.read()
-                    if content.strip():  # 如果文件不是空的
-                        print(textwrap.indent(content, prefix), file=file_output)
+                    if content.strip():
+                        snippet = content if len(content) < 500 else content[:500] + '\n...'
+                        print(textwrap.indent(f"\n```{extension[1:]}\n{snippet}\n```\n", prefix), file=file_output)
             except Exception as e:
                 print(textwrap.indent(f"(无法读取文件内容: {e})", prefix), file=file_output)
         elif extension in FileHandler.IMAGE_EXTENSIONS:
