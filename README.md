@@ -29,9 +29,11 @@ DirectoryTree 是一个Python项目，用于生成目录树并显示文件内容
 ## 使用
 
 1. 运行项目主程序：
-```bash
-python directory_tree/main.py# DirectoryTree
+    ```bash
+    python directory_tree/main.py
 
 2. 根据提示输入要列出的目录路径，生成的目录树及文件内容将被保存到输出文件中。
 
 ## 许可证
+
+该项目采用 GNU General Public License v3.0。详情请参阅 [LICENSE](LICENSE) 文件。
