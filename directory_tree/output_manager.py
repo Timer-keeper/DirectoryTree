@@ -1,7 +1,7 @@
 import os
 import textwrap
 import datetime
-from directory_tree_generator import DirectoryTreeGenerator  # 导入DirectoryTreeGenerator类
+from directory_tree_generator import DirectoryTreeGenerator
 
 class OutputManager:
     def __init__(self, base_output_filename):
@@ -9,12 +9,13 @@ class OutputManager:
     
     def create_output_file(self, directory):
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_filename = f"{self.base_output_filename}_{timestamp}.txt"
+        output_filename = f"{self.base_output_filename}_{timestamp}.md"
         return output_filename
 
     def write_directory_tree(self, directory):
         output_filename = self.create_output_file(directory)
         with open(output_filename, 'w', encoding='utf-8') as file_output:
-            print(directory, file=file_output)  # 打印根目录名称
-            DirectoryTreeGenerator(directory).generate(file_output)  # 使用DirectoryTreeGenerator类生成目录树
+            print(f"# 项目目录结构\n\n```\n{directory}\n", file=file_output)
+            DirectoryTreeGenerator(directory).generate(file_output)
+            print("```\n", file=file_output)
         return output_filename
